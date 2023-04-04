@@ -30,7 +30,7 @@ php artisan key:generate
 5. Start the webserver
 
 ```shell
-php artisan serve
+php artisan serve --port=8088
 npm run dev
 ```
 
