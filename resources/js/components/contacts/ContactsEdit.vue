@@ -42,7 +42,7 @@
           <button type="button" class="text-sm font-medium" @click="addPhoneNumber()">Add</button>
         </div>
       </div>
-      <template v-for="phone_number in contact.phone_numbers" :key="phone_number.id">
+      <template v-for="(phone_number, index) in contact.phone_numbers" :key="phone_number.id">
         <div class="grid grid-cols-3 gap-3">
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Type</label>
@@ -67,7 +67,7 @@
           <div class="">
             <label for="">&nbsp;</label>
             <div class="cursor-pointer">
-              <a type="button" class="text-sm font-medium text-red-700"  @click="deletePhone(event)">Remove</a>
+              <a type="button" class="text-sm font-medium text-red-700"  @click="deletePhone(index)">Remove</a>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
           <button type="button" class="text-sm font-medium" @click="addAddress()">Add</button>
         </div>
       </div>
-      <template v-for="address in contact.addresses" :key="address.id">
+      <template v-for="(address, index) in contact.addresses" :key="address.id">
         <div class="grid grid-cols-3 gap-3">
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700">Address Line</label>
@@ -106,7 +106,7 @@
           <div class="">
             <label for="">&nbsp;</label>
             <div class="cursor-pointer">
-              <a type="button" class="text-sm font-medium text-red-700"  @click="deleteAddress(event)">Remove</a>
+              <a type="button" class="text-sm font-medium text-red-700"  @click="deleteAddress(index)">Remove</a>
             </div>
           </div>
         </div>
@@ -138,5 +138,27 @@ onMounted(() => {
 
 const saveContact = async () => {
     await updateContact(props.id)
+}
+
+const addPhoneNumber = async () => {
+  contact.value.phone_numbers.push({
+    phone_type_id : '',
+    phone_number : ''
+  })
+}
+
+const deletePhone = async (index) => {
+  contact.value.phone_numbers.splice(index, 1)
+}
+
+const addAddress = async () => {
+  contact.value.addresses.push({
+    address_line : '',
+    pincode : ''
+  })
+}
+
+const deleteAddress = async (index) => {
+  contact.value.addresses.splice(index, 1)
 }
 </script>

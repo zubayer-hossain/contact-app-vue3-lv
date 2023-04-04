@@ -60,7 +60,7 @@ export default function useContacts() {
             .then(function(res){
                 if (res.data.status === "success"){
                     notification.notify({
-                        title: "Saved",
+                        title: "Updated",
                         text: res.data.message,
                     });
 
