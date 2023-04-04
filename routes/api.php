@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('contacts', ContactController::class);
-Route::apiResource('phone-types', PhoneTypeController::class);
+Route::apiResource('contacts', PhoneTypeController::class);
